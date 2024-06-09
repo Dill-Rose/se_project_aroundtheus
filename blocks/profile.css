@@ -29,20 +29,30 @@
 }
 
 .profile__edit-button {
-  background: transparent no-repeat center;
+  background: transparent url(../images/edit.svg) no-repeat center;
   height: 24px;
   width: 24px;
   border: #fff 1px solid;
   grid-area: button;
   margin: auto;
+  cursor: pointer;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 .profile__add-button {
-  background: transparent no-repeat center;
+  background: transparent url(../images/add.svg) no-repeat center;
   width: 150px;
   height: 50px;
   border: #fff 2px solid;
   margin-left: auto;
+  cursor: pointer;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 .profile__description {
