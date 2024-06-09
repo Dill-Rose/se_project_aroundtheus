@@ -21,11 +21,14 @@
 
 .profile__title {
   font-size: 42px;
-  font-family: Inter;
+  font-family: "Inter", Arial, sans-serif;
   line-height: 1.14;
   font-weight: 500;
-  grid-area: title;
+  grid-area: "title";
   margin: 0 18px 7px 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
@@ -33,7 +36,7 @@
   height: 24px;
   width: 24px;
   border: #fff 1px solid;
-  grid-area: button;
+  grid-area: "button";
   margin: auto;
   cursor: pointer;
 }
@@ -57,9 +60,13 @@
 
 .profile__description {
   font-size: 18px;
-  font-family: Inter;
+  font-family: "Inter", Arial, sans-serif;
   line-height: 1.2;
   font-weight: 400;
-  grid-area: description;
+  grid-area: "description";
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 373px;
 }
