@@ -2,7 +2,7 @@
   margin-top: 67px;
 }
 
-.footer__description {
+.footer__copyright {
   color: #545454;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
@@ -16,7 +16,7 @@
     margin-top: 48px;
   }
 
-  .footer__description {
+  .footer__copyright {
     font-size: 14px;
   }
 }
