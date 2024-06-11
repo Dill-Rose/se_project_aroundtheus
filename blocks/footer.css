@@ -1,8 +1,22 @@
 .footer {
+  margin-top: 67px;
+}
+
+.footer__description {
   color: #545454;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   line-height: 1.2;
   font-size: 18px;
-  margin-top: 67px;
+  margin: 0;
+}
+
+@media screen and (max-width: 620px) {
+  .footer {
+    margin-top: 48px;
+  }
+
+  .footer__description {
+    font-size: 14px;
+  }
 }
