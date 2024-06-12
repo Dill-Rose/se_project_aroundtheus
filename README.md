@@ -5,6 +5,8 @@
 - Intro
 - Figma
 - Images
+- Video Eplanation
+- Project Link
 
 **Intro**
 
@@ -16,9 +18,17 @@ This project is made with a responsive design so that all of the elements are di
 
 **Images**
 
-[Bald Mountains](/images/bald-mountains.jpg)
-[Lago](/images/lago.jpg)
-[Lake Louise](/images/lake-louise.jpg)
-[Latemar](/images/latemar.jpg)
-[Vanoise](/images/vanoise.jpg)
-[Yosemite](/images/yosemite.jpg)
+- [Bald Mountains](/images/bald-mountains.jpg)
+- [Lago](/images/lago.jpg)
+- [Lake Louise](/images/lake-louise.jpg)
+- [Latemar](/images/latemar.jpg)
+- [Vanoise](/images/vanoise.jpg)
+- [Yosemite](/images/yosemite.jpg)
+
+**Video Explanation**
+
+[Video](https://drive.google.com/file/d/1evXU8U2WCwXuHJqyNgUTfmoG4pAy4l16/view?usp=sharing)
+
+**Project Link**
+
+[Around The U.S.](https://dill-rose.github.io/se_project_aroundtheus/)
