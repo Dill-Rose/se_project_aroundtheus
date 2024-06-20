@@ -22,6 +22,8 @@
   padding: 36px;
   border-radius: 10px;
   position: relative;
+  max-width: 358px;
+  min-height: 258px;
 }
 
 .modal__heading {
