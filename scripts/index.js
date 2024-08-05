@@ -29,7 +29,8 @@ const initialCards = [
 
 let modalEdit = document.querySelector("#profile-edit-button");
 let profileEditModal = document.querySelector("#profile-edit-modal");
-let modalClose = document.querySelector("#modal-close-button");
+let profileModalClose = profileEditModal.querySelector("#modal-close-button");
+
 let profileTitle = document.querySelector(".profile__title");
 let profileDescription = document.querySelector(".profile__description");
 let profileTitleInput = document.querySelector("#profile-title-input");
@@ -40,18 +41,24 @@ let profileEditForm = profileEditModal.querySelector(".modal__form");
 let cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 let cardListEl = document.querySelector(".cards__list");
-//let newCardBtn = document.querySelector()
+let addCardBtn = document.querySelector("#profile-add-button");
+let addCardModal = document.querySelector("#add-card-modal");
+let addCardModalClose = addCardModal.querySelector("#modal-close-button");
 
 /**Functions**/
 
-function openModal() {
+/**function openModal() {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal_opened");
+}
+**/
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
 }
 
-function closeModal() {
-  profileEditModal.classList.remove("modal_opened");
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 }
 
 function getCardElement(data) {
@@ -63,6 +70,7 @@ function getCardElement(data) {
   cardTitleEl.textContent = data.name;
   return cardElement;
 }
+
 /**Event Handlers**/
 
 function handleProfileSubmit(e) {
@@ -75,8 +83,14 @@ function handleProfileSubmit(e) {
 /**Event Listeners**/
 
 profileEditForm.addEventListener("submit", handleProfileSubmit);
-modalClose.addEventListener("click", closeModal);
-modalEdit.addEventListener("click", openModal);
+profileModalClose.addEventListener("click", () => closeModal(profileEditModal));
+modalEdit.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  openModal(profileEditModal);
+});
+addCardBtn.addEventListener("click", () => openModal(addCardModal));
+addCardModalClose.addEventListener("click", () => closeModal(addCardModal));
 
 /**Loops**/
 
