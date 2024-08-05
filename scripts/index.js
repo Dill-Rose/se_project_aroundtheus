@@ -40,6 +40,7 @@ let profileEditForm = profileEditModal.querySelector(".modal__form");
 let cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 let cardListEl = document.querySelector(".cards__list");
+//let newCardBtn = document.querySelector()
 
 /**Functions**/
 
