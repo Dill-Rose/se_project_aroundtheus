@@ -4,6 +4,7 @@
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -39,6 +40,25 @@
   cursor: pointer;
 }
 
+.card__like-button_active {
+  background-image: url(../images/Union.svg);
+}
+
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__delete-button {
+  background: transparent url(../images/Trash.svg) no-repeat center;
+  border: none;
+  cursor: pointer;
+  width: 19px;
+  height: 18px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
 }

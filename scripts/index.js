@@ -68,6 +68,17 @@ function getCardElement(data) {
   let cardElement = cardTemplate.cloneNode(true);
   let cardImageEl = cardElement.querySelector(".card__image");
   let cardTitleEl = cardElement.querySelector(".card__title");
+  let cardLikeButtons = cardElement.querySelector(".card__like-button");
+  // find delte button
+  //add event listener to delete button
+  //call cardElement.remove
+
+  // addd click listener to cardImage elemetn
+  //use openmodal pass it (previewImageModal)
+  //
+  cardLikeButtons.addEventListener("click", () => {
+    cardLikeButtons.classList.toggle("card__like-button_active");
+  });
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
