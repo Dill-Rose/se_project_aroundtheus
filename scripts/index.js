@@ -77,7 +77,7 @@ function getCardElement(data) {
 
   cardImageEl.addEventListener("click", () => {
     const previewImage = previewImageModal.querySelector(".modal__image");
-    const previewTitle = previewImageModal.querySelector(".image__title");
+    const previewTitle = previewImageModal.querySelector(".modal__title");
     previewImage.src = data.link;
     previewImage.alt = data.name;
     previewTitle.textContent = data.name;

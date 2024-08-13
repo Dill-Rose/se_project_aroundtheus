@@ -10,10 +10,6 @@
   padding: 0 19px;
 }
 
-.modal_type_preview {
-  wi
-}
-
 .modal_opened {
   display: flex;
 }
@@ -27,6 +23,10 @@
   max-width: 358px;
   min-height: 258px;
   box-sizing: border-box;
+}
+
+.modal__container_type_preview {
+  background: transparent;
 }
 
 .modal__heading {
@@ -96,13 +96,6 @@
 
 .modal__close:hover {
   opacity: 0.6;
-}
-
-.modal__image-container {
-  height: 75vh;
-  width: 0.75vw;
-  position: relative;
-  
 }
 
 @media screen and (max-width: 600px) {
