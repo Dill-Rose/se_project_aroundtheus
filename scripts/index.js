@@ -36,6 +36,7 @@ let profileEditForm = profileEditModal.querySelector(".modal__form");
 let cardListEl = document.querySelector(".cards__list");
 let addCardModal = document.querySelector("#add-card-modal");
 let addCardForm = addCardModal.querySelector(".modal__form");
+let previewImageModal = document.querySelector("#preview-image-modal");
 
 /** Buttons and other DOM */
 let modalEdit = document.querySelector("#profile-edit-button");
@@ -69,13 +70,20 @@ function getCardElement(data) {
   let cardImageEl = cardElement.querySelector(".card__image");
   let cardTitleEl = cardElement.querySelector(".card__title");
   let cardLikeButtons = cardElement.querySelector(".card__like-button");
-  // find delte button
-  //add event listener to delete button
-  //call cardElement.remove
+  let cardDeleteButtons = cardElement.querySelector(".card__delete-button");
+  cardDeleteButtons.addEventListener("click", () => {
+    cardElement.remove();
+  });
 
-  // addd click listener to cardImage elemetn
-  //use openmodal pass it (previewImageModal)
-  //
+  cardImageEl.addEventListener("click", () => {
+    const previewImage = previewImageModal.querySelector(".modal__image");
+    const previewTitle = previewImageModal.querySelector(".image__title");
+    previewImage.src = data.link;
+    previewImage.alt = data.name;
+    previewTitle.textContent = data.name;
+    openModal(previewImageModal);
+  });
+
   cardLikeButtons.addEventListener("click", () => {
     cardLikeButtons.classList.toggle("card__like-button_active");
   });

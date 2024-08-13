@@ -4,11 +4,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: aqua;
   z-index: 999;
   display: none;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0 19px;
+}
+
+.modal_type_preview {
+  wi
 }
 
 .modal_opened {
@@ -93,6 +96,13 @@
 
 .modal__close:hover {
   opacity: 0.6;
+}
+
+.modal__image-container {
+  height: 75vh;
+  width: 0.75vw;
+  position: relative;
+  
 }
 
 @media screen and (max-width: 600px) {
