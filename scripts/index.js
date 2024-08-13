@@ -46,6 +46,9 @@ let profileDescription = document.querySelector(".profile__description");
 
 let addCardBtn = document.querySelector("#profile-add-button");
 let addCardModalClose = addCardModal.querySelector("#modal-close-button");
+let previewImageModalClose = previewImageModal.querySelector(
+  "#modal-close-button"
+);
 
 /** Form data */
 let profileTitleInput = document.querySelector("#profile-title-input");
@@ -127,7 +130,9 @@ modalEdit.addEventListener("click", () => {
 });
 addCardBtn.addEventListener("click", () => openModal(addCardModal));
 addCardModalClose.addEventListener("click", () => closeModal(addCardModal));
-
+previewImageModalClose.addEventListener("click", () =>
+  closeModal(previewImageModal)
+);
 /**Loops**/
 
 initialCards.forEach((data) => renderCard(data, cardListEl));
