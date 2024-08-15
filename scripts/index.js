@@ -49,6 +49,8 @@ const addCardModalClose = addCardModal.querySelector("#modal-close-button");
 const previewImageModalClose = previewImageModal.querySelector(
   "#modal-close-button"
 );
+const previewImage = previewImageModal.querySelector(".modal__image");
+const previewTitle = previewImageModal.querySelector(".modal__title");
 
 /** Form data */
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -79,8 +81,6 @@ function getCardElement(data) {
   });
 
   cardImageEl.addEventListener("click", () => {
-    let previewImage = previewImageModal.querySelector(".modal__image");
-    let previewTitle = previewImageModal.querySelector(".modal__title");
     previewImage.src = data.link;
     previewImage.alt = data.name;
     previewTitle.textContent = data.name;
