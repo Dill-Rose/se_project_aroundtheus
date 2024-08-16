@@ -71,11 +71,11 @@ function closeModal(modal) {
 }
 
 function getCardElement(data) {
-  let cardElement = cardTemplate.cloneNode(true);
-  let cardImageEl = cardElement.querySelector(".card__image");
-  let cardTitleEl = cardElement.querySelector(".card__title");
-  let cardLikeButton = cardElement.querySelector(".card__like-button");
-  let cardDeleteButton = cardElement.querySelector(".card__delete-button");
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  const cardLikeButton = cardElement.querySelector(".card__like-button");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
   cardDeleteButton.addEventListener("click", () => {
     cardElement.remove();
   });
@@ -97,7 +97,7 @@ function getCardElement(data) {
 }
 
 function renderCard(data, wrapper) {
-  let cardElement = getCardElement(data);
+  const cardElement = getCardElement(data);
   wrapper.prepend(cardElement);
 }
 
@@ -112,8 +112,8 @@ function handleProfileSubmit(e) {
 
 function handleAddNewCardSubmit(e) {
   e.preventDefault();
-  let name = cardTitleInput.value;
-  let link = cardUrlInput.value;
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardForm.reset();
