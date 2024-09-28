@@ -61,14 +61,15 @@
   line-height: 30px;
 }
 
-.modal__fieldset {
+.modal__label {
   border: none;
   max-width: 358px;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
-.modal__fieldset-input {
+.modal__input {
   width: 100%;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -80,7 +81,7 @@
   padding-bottom: 13px;
 }
 
-.modal__fieldset-input:last-of-type {
+.modal__input:last-of-type {
   margin-bottom: 48px;
 }
 
@@ -119,6 +120,24 @@
   opacity: 0.6;
 }
 
+.modal__error {
+  font-size: 12px;
+  line-height: 14px;
+  color: #f00;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  opacity: 0;
+}
+
+.modal__input_type_error {
+  border-color: #f00;
+}
+
+.modal__error_visible {
+  opacity: 1;
+}
+
 @media screen and (max-width: 600px) {
   .modal__close {
     width: 26px;
@@ -137,7 +156,7 @@
     padding: 0;
   }
 
-  .modal__fieldset-input:last-of-type {
+  .modal__input:last-of-type {
     margin-bottom: 45px;
   }
   .modal__heading {
