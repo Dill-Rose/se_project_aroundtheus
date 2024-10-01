@@ -105,6 +105,12 @@ function renderCard(data, wrapper) {
   wrapper.prepend(cardElement);
 }
 
+function handleModalOverlay(e) {
+  if (e.target.classList.contains("modal_opened")) {
+    closeModal(e.target);
+  }
+}
+
 /**Event Handlers**/
 
 function handleProfileSubmit(e) {

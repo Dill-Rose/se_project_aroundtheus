@@ -42,8 +42,7 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 
 function setEventListeners(formEl, options) {
   const inputEls = Array.from(formEl.querySelectorAll(options.inputSelector));
-  const submitButton = formEl.querySelector(".modal__button");
-  console.log(submitButton);
+  const submitButton = formEl.querySelector(options.submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
@@ -73,16 +72,10 @@ function enableValidation(options) {
   });
 }
 
-function handleModalOverlay(e) {
-  if (e.target.classList.contains("modal_opened")) {
-    closeModal(e.target);
-  }
-}
-
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  submitButtonSelector: "modal__button",
+  submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
