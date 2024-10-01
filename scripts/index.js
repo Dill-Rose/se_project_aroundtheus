@@ -64,10 +64,14 @@ const cardUrlInput = addCardForm.querySelector("#image-url-input");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  modal.addEventListener("mousedown", handleModalOverlay);
+  document.addEventListener("keydown", handleEscKeyPress);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  modal.removeEventListener("mousedown", handleModalOverlay);
+  document.removeEventListener("keydown", handleEscKeyPress);
 }
 
 function getCardElement(data) {
@@ -117,6 +121,15 @@ function handleAddNewCardSubmit(e) {
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardForm.reset();
+}
+
+function handleEscKeyPress(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
 }
 
 /**Event Listeners**/
