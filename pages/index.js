@@ -48,9 +48,6 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 };
 
-const card = new Card(cardData, "#card-template");
-card.getView();
-
 /**Templates **/
 
 const cardTemplate =
@@ -100,34 +97,13 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscKeyPress);
 }
 
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardLikeButton = cardElement.querySelector(".card__like-button");
-  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
-  cardDeleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImageEl.addEventListener("click", () => {
-    previewImage.src = data.link;
-    previewImage.alt = data.name;
-    previewTitle.textContent = data.name;
-    openModal(previewImageModal);
-  });
-
-  cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__like-button_active");
-  });
-  cardImageEl.src = data.link;
-  cardImageEl.alt = data.name;
-  cardTitleEl.textContent = data.name;
-  return cardElement;
+function createCard(data) {
+  const card = new Card(data, "#card-template");
+  return card.getView();
 }
 
 function renderCard(data, wrapper) {
-  const cardElement = getCardElement(data);
+  const cardElement = createCard(data);
   wrapper.prepend(cardElement);
 }
 
