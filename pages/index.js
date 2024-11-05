@@ -97,8 +97,15 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscKeyPress);
 }
 
+function handleImageClick(data) {
+  previewImage.src = data._link;
+  previewImage.alt = data._name;
+  previewTitle.textContent = data._name;
+  openModal(previewImageModal);
+}
+
 function createCard(data) {
-  const card = new Card(data, "#card-template");
+  const card = new Card(data, "#card-template", handleImageClick);
   return card.getView();
 }
 
