@@ -1,32 +1,11 @@
-import FormValidator from "../components/FormValidator.js";
-import Card from "../components/Card.js";
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
+import FormValidator from "./FormValidator.js";
+import Card from "./Card.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import Section from "./Section.js";
+import UserInfo from "./UserInfo.js";
+import "../pages/index.css";
+import "../utils/constants.js";
 
 /**Templates **/
 
@@ -130,8 +109,8 @@ function handleEscKeyPress(evt) {
 
 /**Event Listeners**/
 
-profileEditForm.addEventListener("submit", handleProfileSubmit);
-addCardForm.addEventListener("submit", handleAddNewCardSubmit);
+//profileEditForm.addEventListener("submit", handleProfileSubmit);
+//addCardForm.addEventListener("submit", handleAddNewCardSubmit);
 profileModalClose.addEventListener("click", () => closeModal(profileEditModal));
 modalEdit.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
@@ -168,3 +147,40 @@ const editCardFormValidator = new FormValidator(
 
 addCardFormValidator.enableValidation();
 editCardFormValidator.enableValidation();
+
+const editProfilePopup = new PopupWithForm(
+  {
+    popupSelector: "#profile-edit-modal",
+  },
+  handleProfileSubmit
+);
+
+editProfilePopup.setEventListeners();
+
+const addCardPopup = new PopupWithForm(
+  {
+    popupSelector: "#add-card-modal",
+  },
+  handleAddNewCardSubmit
+);
+
+addCardPopup.setEventListeners();
+
+const cardSection = new Section(
+  {
+    renderer: (item) => {
+      const cardEl = createCard(item);
+      cardSection.addItem(cardEl);
+    },
+  },
+  "cards__list"
+);
+
+const imagePopup = new PopupWithImage({ popupSelector: ".modal__image" });
+
+imagePopup.setEventListeners();
+
+const usersInfo = new UserInfo({
+  nameElement: "#profile-title-input",
+  jobElement: "#profile-description-input",
+});

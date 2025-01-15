@@ -4,10 +4,12 @@ export default class Popup {
   }
   open() {
     this._popupElement.classList.add("modal__opened");
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
   close() {
     this._popupElement.classList.remove("modal__opened");
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
   _handleEscClose() {
@@ -17,6 +19,13 @@ export default class Popup {
   }
 
   setEventListeners() {
-    // sets event listeners
+    this._popup.addEventListener("click", (event) => {
+      if (
+        event.target.ClassList.contains(".modal__close") ||
+        event.target.classList.contains(".modal__opened")
+      ) {
+        this.close();
+      }
+    });
   }
 }
