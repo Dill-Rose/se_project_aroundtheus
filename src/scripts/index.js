@@ -5,7 +5,7 @@ import PopupWithImage from "./PopupWithImage.js";
 import Section from "./Section.js";
 import UserInfo from "./UserInfo.js";
 import "../pages/index.css";
-import "../utils/constants.js";
+import { initialCards } from "../utils/constants.js";
 
 /**Templates **/
 
