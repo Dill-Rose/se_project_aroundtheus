@@ -149,18 +149,14 @@ addCardFormValidator.enableValidation();
 editCardFormValidator.enableValidation();
 
 const editProfilePopup = new PopupWithForm(
-  {
-    popupSelector: "#profile-edit-modal",
-  },
+  "#profile-edit-modal",
   handleProfileSubmit
 );
 
 editProfilePopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm(
-  {
-    popupSelector: "#add-card-modal",
-  },
+  "#add-card-modal",
   handleAddNewCardSubmit
 );
 
