@@ -115,11 +115,11 @@ profileModalClose.addEventListener("click", () => addCardPopup.close());
 modalEdit.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  addCardPopup.open();
+  editProfilePopup.open();
 });
 addCardBtn.addEventListener("click", () => addCardPopup.open());
 addCardModalClose.addEventListener("click", () => addCardPopup.close());
-previewImageModalClose.addEventListener("click", () => addCardPopup.close());
+previewImageModalClose.addEventListener("click", () => imagePopup.close());
 /**Loops**/
 
 initialCards.forEach((data) => renderCard(data, cardListEl));
