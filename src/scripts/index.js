@@ -81,15 +81,15 @@ function handleModalOverlay(e) {
 
 /**Event Handlers**/
 
-function handleProfileSubmit(e) {
-  e.preventDefault();
+function handleProfileSubmit(inputValues) {
+  console.log(inputValues);
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
 }
 
-function handleAddNewCardSubmit(e) {
-  e.preventDefault();
+function handleAddNewCardSubmit(inputValues) {
+  console.log(inputValues);
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
@@ -111,17 +111,15 @@ function handleEscKeyPress(evt) {
 
 //profileEditForm.addEventListener("submit", handleProfileSubmit);
 //addCardForm.addEventListener("submit", handleAddNewCardSubmit);
-profileModalClose.addEventListener("click", () => closeModal(profileEditModal));
+profileModalClose.addEventListener("click", () => addCardPopup.close());
 modalEdit.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
+  addCardPopup.open();
 });
-addCardBtn.addEventListener("click", () => openModal(addCardModal));
-addCardModalClose.addEventListener("click", () => closeModal(addCardModal));
-previewImageModalClose.addEventListener("click", () =>
-  closeModal(previewImageModal)
-);
+addCardBtn.addEventListener("click", () => addCardPopup.open());
+addCardModalClose.addEventListener("click", () => addCardPopup.close());
+previewImageModalClose.addEventListener("click", () => addCardPopup.close());
 /**Loops**/
 
 initialCards.forEach((data) => renderCard(data, cardListEl));
