@@ -7,40 +7,27 @@ import UserInfo from "./UserInfo.js";
 import "../pages/index.css";
 import { initialCards } from "../utils/constants.js";
 
-/**Templates **/
-
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-
-/** Wrappers */
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardListEl = document.querySelector(".cards__list");
-const addCardModal = document.querySelector("#add-card-modal");
-const addCardForm = addCardModal.querySelector(".modal__form");
-const previewImageModal = document.querySelector("#preview-image-modal");
-
-/** Buttons and other DOM */
-const modalEdit = document.querySelector("#profile-edit-button");
-const profileModalClose = profileEditModal.querySelector("#modal-close-button");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-
-const addCardBtn = document.querySelector("#profile-add-button");
-const addCardModalClose = addCardModal.querySelector("#modal-close-button");
-const previewImageModalClose = previewImageModal.querySelector(
-  "#modal-close-button"
-);
-const previewImage = previewImageModal.querySelector(".modal__image");
-const previewTitle = previewImageModal.querySelector(".modal__title");
-
-/** Form data */
-const profileTitleInput = document.querySelector("#profile-title-input");
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
-const cardTitleInput = addCardForm.querySelector("#card-title-input");
-const cardUrlInput = addCardForm.querySelector("#image-url-input");
+import {
+  profileEditModal,
+  profileEditForm,
+  cardListEl,
+  addCardModal,
+  addCardForm,
+  previewImageModal,
+  modalEdit,
+  profileModalClose,
+  profileTitle,
+  profileDescription,
+  addCardBtn,
+  addCardModalClose,
+  previewImageModalClose,
+  previewImage,
+  previewTitle,
+  profileTitleInput,
+  profileDescriptionInput,
+  cardTitleInput,
+  cardUrlInput,
+} from "../utils/constants.js";
 
 /**Functions**/
 
@@ -57,10 +44,7 @@ function closeModal(modal) {
 }
 
 function handleImageClick(data) {
-  previewImage.src = data.link;
-  previewImage.alt = data.name;
-  previewTitle.textContent = data.name;
-  openModal(previewImageModal);
+  imagePopup.open(data);
 }
 
 function createCard(data) {
@@ -109,17 +93,13 @@ function handleEscKeyPress(evt) {
 
 /**Event Listeners**/
 
-//profileEditForm.addEventListener("submit", handleProfileSubmit);
-//addCardForm.addEventListener("submit", handleAddNewCardSubmit);
-profileModalClose.addEventListener("click", () => addCardPopup.close());
 modalEdit.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   editProfilePopup.open();
 });
 addCardBtn.addEventListener("click", () => addCardPopup.open());
-addCardModalClose.addEventListener("click", () => addCardPopup.close());
-previewImageModalClose.addEventListener("click", () => imagePopup.close());
+
 /**Loops**/
 
 initialCards.forEach((data) => renderCard(data, cardListEl));
@@ -132,6 +112,8 @@ const formValidationSettings = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+
+/**Instances**/
 
 const addCardFormValidator = new FormValidator(
   formValidationSettings,
@@ -162,15 +144,18 @@ addCardPopup.setEventListeners();
 
 const cardSection = new Section(
   {
+    items: initialCards,
     renderer: (item) => {
       const cardEl = createCard(item);
       cardSection.addItem(cardEl);
     },
   },
-  "cards__list"
+  ".cards__list"
 );
 
-const imagePopup = new PopupWithImage({ popupSelector: ".modal__image" });
+const imagePopup = new PopupWithImage({
+  popupSelector: "#preview-image-modal",
+});
 
 imagePopup.setEventListeners();
 
@@ -178,3 +163,6 @@ const usersInfo = new UserInfo({
   nameElement: "#profile-title-input",
   jobElement: "#profile-description-input",
 });
+
+usersInfo.getUserInfo();
+usersInfo.setUserInfo();
