@@ -28,6 +28,7 @@ import {
   cardTitleInput,
   cardUrlInput,
 } from "../utils/constants.js";
+import { data } from "autoprefixer";
 
 /**Functions**/
 
@@ -69,7 +70,7 @@ function handleProfileSubmit(inputValues) {
   console.log(inputValues);
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
+  editProfilePopup.close();
 }
 
 function handleAddNewCardSubmit(inputValues) {
@@ -77,7 +78,7 @@ function handleAddNewCardSubmit(inputValues) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
-  closeModal(addCardModal);
+  addCardPopup.close();
   addCardForm.reset();
   addCardFormValidator.disableSubmitButton();
 }
@@ -165,4 +166,4 @@ const usersInfo = new UserInfo({
 });
 
 usersInfo.getUserInfo();
-usersInfo.setUserInfo();
+usersInfo.setUserInfo(data);
