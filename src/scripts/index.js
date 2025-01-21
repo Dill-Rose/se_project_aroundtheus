@@ -95,8 +95,9 @@ function handleEscKeyPress(evt) {
 /**Event Listeners**/
 
 modalEdit.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  const currentUserInfo = userInfo.getUserInfo();
+  profileTitleInput.value = currentUserInfo.name;
+  profileDescriptionInput.value = currentUserInfo.description;
   editProfilePopup.open();
 });
 addCardBtn.addEventListener("click", () => addCardPopup.open());
@@ -160,10 +161,7 @@ const imagePopup = new PopupWithImage({
 
 imagePopup.setEventListeners();
 
-const usersInfo = new UserInfo({
-  nameElement: "#profile-title-input",
-  jobElement: "#profile-description-input",
+const userInfo = new UserInfo({
+  nameElement: ".profile__title",
+  jobElement: ".profile__description",
 });
-
-usersInfo.getUserInfo();
-usersInfo.setUserInfo(data);
