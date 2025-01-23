@@ -1,9 +1,9 @@
-import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
 import { initialCards } from "../utils/constants.js";
 
@@ -32,18 +32,6 @@ import { data } from "autoprefixer";
 
 /**Functions**/
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  modal.addEventListener("mousedown", handleModalOverlay);
-  document.addEventListener("keydown", handleEscKeyPress);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  modal.removeEventListener("mousedown", handleModalOverlay);
-  document.removeEventListener("keydown", handleEscKeyPress);
-}
-
 function handleImageClick(data) {
   imagePopup.open(data);
 }
@@ -56,12 +44,6 @@ function createCard(data) {
 function renderCard(data, wrapper) {
   const cardElement = createCard(data);
   wrapper.prepend(cardElement);
-}
-
-function handleModalOverlay(e) {
-  if (e.target.classList.contains("modal_opened")) {
-    closeModal(e.target);
-  }
 }
 
 /**Event Handlers**/
@@ -81,15 +63,6 @@ function handleAddNewCardSubmit(inputValues) {
   addCardPopup.close();
   addCardForm.reset();
   addCardFormValidator.disableSubmitButton();
-}
-
-function handleEscKeyPress(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    if (openedModal) {
-      closeModal(openedModal);
-    }
-  }
 }
 
 /**Event Listeners**/
