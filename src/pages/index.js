@@ -43,15 +43,14 @@ function createCard(data) {
 
 function renderCard(data, wrapper) {
   const cardElement = createCard(data);
-  wrapper.prepend(cardElement);
+  cardSection.addItem(cardElement);
 }
 
 /**Event Handlers**/
 
 function handleProfileSubmit(inputValues) {
   console.log(inputValues);
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+  userInfo.setUserInfo(inputValues);
   editProfilePopup.close();
 }
 
@@ -77,7 +76,7 @@ addCardBtn.addEventListener("click", () => addCardPopup.open());
 
 /**Loops**/
 
-initialCards.forEach((data) => renderCard(data, cardListEl));
+//initialCards.forEach((data) => renderCard(data, cardListEl));
 
 const formValidationSettings = {
   formSelector: ".modal__form",
@@ -127,6 +126,8 @@ const cardSection = new Section(
   },
   ".cards__list"
 );
+
+cardSection.renderItems();
 
 const imagePopup = new PopupWithImage({
   popupSelector: "#preview-image-modal",
