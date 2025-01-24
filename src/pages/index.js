@@ -6,6 +6,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
 import { initialCards } from "../utils/constants.js";
+import { formValidationSettings } from "../utils/constants.js";
 
 import {
   profileEditModal,
@@ -41,7 +42,7 @@ function createCard(data) {
   return card.getView();
 }
 
-function renderCard(data, wrapper) {
+function renderCard(data) {
   const cardElement = createCard(data);
   cardSection.addItem(cardElement);
 }
@@ -78,15 +79,6 @@ addCardBtn.addEventListener("click", () => addCardPopup.open());
 
 //initialCards.forEach((data) => renderCard(data, cardListEl));
 
-const formValidationSettings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
 /**Instances**/
 
 const addCardFormValidator = new FormValidator(
@@ -120,7 +112,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const cardEl = createCard(item);
+      const cardEl = renderCard(item);
       cardSection.addItem(cardEl);
     },
   },
