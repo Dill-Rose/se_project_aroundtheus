@@ -57,8 +57,8 @@ function handleProfileSubmit(inputValues) {
 
 function handleAddNewCardSubmit(inputValues) {
   console.log(inputValues);
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
+  const name = inputValues.title;
+  const link = inputValues.url;
   renderCard({ name, link }, cardListEl);
   addCardPopup.close();
   addCardForm.reset();
@@ -76,8 +76,6 @@ modalEdit.addEventListener("click", () => {
 addCardBtn.addEventListener("click", () => addCardPopup.open());
 
 /**Loops**/
-
-//initialCards.forEach((data) => renderCard(data, cardListEl));
 
 /**Instances**/
 
@@ -112,8 +110,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const cardEl = renderCard(item);
-      cardSection.addItem(cardEl);
+      renderCard(item);
     },
   },
   ".cards__list"
