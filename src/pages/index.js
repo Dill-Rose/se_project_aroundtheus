@@ -7,6 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
 import { initialCards } from "../utils/constants.js";
 import { formValidationSettings } from "../utils/constants.js";
+import Api from "../components/Api.js";
 
 import {
   profileEditModal,
@@ -127,4 +128,12 @@ imagePopup.setEventListeners();
 const userInfo = new UserInfo({
   nameElement: ".profile__title",
   jobElement: ".profile__description",
+});
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "df36dc5f-8cae-4138-a83c-3bb04eab48d9",
+    "Content-Type": "application/json",
+  },
 });
