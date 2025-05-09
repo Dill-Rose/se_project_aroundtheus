@@ -133,7 +133,7 @@ const userInfo = new UserInfo({
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "df36dc5f-8cae-4138-a83c-3bb04eab48d9",
+    authorization: "cbf1e137-6dc5-4837-aa36-72d8ab218669",
     "Content-Type": "application/json",
   },
 });

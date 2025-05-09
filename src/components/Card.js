@@ -15,7 +15,7 @@ export default class Card {
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteCard();
+        this._showConfirmModal();
       });
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick({ link: this._link, name: this._name });
@@ -24,6 +24,11 @@ export default class Card {
 
   _handleDeleteCard() {
     this._cardElement.remove();
+  }
+
+  _showConfirmModal() {
+    const modal = document.getElementById("confirm-modal");
+    modal.style.display = "block";
   }
 
   _handleLikeIcon() {

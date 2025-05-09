@@ -127,6 +127,31 @@
       </div>
     </div>
 
+    <!-- Confirm Delete modal -->
+    <div class="modal" id="confirm-modal">
+      <div class="modal__container">
+        <form class="modal__form" id="confirm-form">
+          <button class="modal__close" id="modal-close-button"></button>
+          <p class="modal__heading" id="confirm-heading">Are you sure?</p>
+          <label class="modal__label" for="confirm-change">
+            <input
+              class="modal__input"
+              id="confirm-delete-input"
+              type="text"
+              name="Confirm"
+            />
+            <span class="modal__error" id="confirm-delete-input-error"></span>
+          </label>
+          <button
+            class="modal__button modal__button_disabled"
+            id="confirm-button"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Preview Image Modal -->
     <div class="modal" id="preview-image-modal">
       <div class="modal__container modal__container_type_preview">
