@@ -137,3 +137,12 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+api
+  .getInitialCards()
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
