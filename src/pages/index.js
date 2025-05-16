@@ -65,6 +65,8 @@ api
 
 /**Functions**/
 
+function changeLikeStatus(evt, id) {}
+
 function handleDeleteClick(cardId, card) {
   confirmPopup.open();
   confirmPopup.setSubmitAction(() => {
@@ -103,7 +105,7 @@ function handleProfileSubmit(inputValues) {
   api
     .editProfile(name, about)
     .then(() => {
-      userInfo.setUserInfo(inputValues);
+      userInfo.setUserInfo({ name, about });
       editProfilePopup.close();
     })
     .catch((err) => {

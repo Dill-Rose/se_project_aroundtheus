@@ -28,11 +28,6 @@ export default class Card {
     this._cardElement.remove();
   }
 
-  // _showConfirmModal() {
-  //   const modal = document.getElementById("confirm-modal");
-  //   modal.style.display = "block";
-  // }
-
   _handleLikeIcon() {
     this._cardElement
       .querySelector(".card__like-button")
