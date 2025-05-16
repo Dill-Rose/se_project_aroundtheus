@@ -18,7 +18,7 @@ export default class Api {
     }).then(this._handleServerResponse);
   }
 
-  editProfile() {
+  editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -29,10 +29,14 @@ export default class Api {
     }).then(this._handleServerResponse);
   }
 
-  addNewCard() {
+  addNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
+      body: JSON.stringify({
+        name,
+        link,
+      }),
     }).then(this._handleServerResponse);
   }
 

@@ -31,15 +31,61 @@ import {
   cardUrlInput,
 } from "../utils/constants.js";
 import { data } from "autoprefixer";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
+
+const cardData = [];
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "cbf1e137-6dc5-4837-aa36-72d8ab218669",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getInitialCards()
+  .then((res) => {
+    console.log(res);
+    cardSection.renderItems(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+api
+  .getUserInfo()
+  .then((res) => {
+    console.log(res);
+    userInfo.setUserInfo(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 /**Functions**/
+
+function handleDeleteClick(cardId, card) {
+  confirmPopup.open();
+  confirmPopup.setSubmitAction(() => {
+    api.deleteCard(cardId).then(() => {
+      confirmPopup.close();
+      card.remove();
+    });
+  });
+}
 
 function handleImageClick(data) {
   imagePopup.open(data);
 }
 
 function createCard(data) {
-  const card = new Card(data, "#card-template", handleImageClick);
+  const card = new Card(
+    data,
+    "#card-template",
+    handleImageClick,
+    handleDeleteClick
+  );
   return card.getView();
 }
 
@@ -52,18 +98,33 @@ function renderCard(data) {
 
 function handleProfileSubmit(inputValues) {
   console.log(inputValues);
-  userInfo.setUserInfo(inputValues);
-  editProfilePopup.close();
+  const name = inputValues.title;
+  const about = inputValues.description;
+  api
+    .editProfile(name, about)
+    .then(() => {
+      userInfo.setUserInfo(inputValues);
+      editProfilePopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function handleAddNewCardSubmit(inputValues) {
   console.log(inputValues);
   const name = inputValues.title;
   const link = inputValues.url;
-  renderCard({ name, link }, cardListEl);
-  addCardPopup.close();
-  addCardForm.reset();
-  addCardFormValidator.disableSubmitButton();
+  api
+    .addNewCard({ name, link })
+    .then((data) => {
+      console.log(data);
+      renderCard(data, cardListEl);
+      addCardPopup.close();
+      addCardForm.reset();
+      addCardFormValidator.disableSubmitButton();
+    })
+    .catch((err) => console.log(err));
 }
 
 /**Event Listeners**/
@@ -109,7 +170,6 @@ addCardPopup.setEventListeners();
 
 const cardSection = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       renderCard(item);
     },
@@ -130,37 +190,6 @@ const userInfo = new UserInfo({
   jobElement: ".profile__description",
 });
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "cbf1e137-6dc5-4837-aa36-72d8ab218669",
-    "Content-Type": "application/json",
-  },
-});
+const confirmPopup = new PopupWithConfirm({ popupSelector: "#confirm-modal" });
 
-api
-  .getInitialCards()
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-api
-  .getUserInfo()
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-api
-  .editProfile()
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+confirmPopup.setEventListeners();

@@ -1,9 +1,11 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageClick) {
+  constructor(data, cardSelector, handleImageClick, handleDeleteClick) {
+    this._id = data._id;
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _setEventListeners() {
@@ -15,21 +17,21 @@ export default class Card {
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._showConfirmModal();
+        this._handleDeleteClick(this._id, this);
       });
     this._cardImage.addEventListener("click", () => {
       this._handleImageClick({ link: this._link, name: this._name });
     });
   }
 
-  _handleDeleteCard() {
+  remove() {
     this._cardElement.remove();
   }
 
-  _showConfirmModal() {
-    const modal = document.getElementById("confirm-modal");
-    modal.style.display = "block";
-  }
+  // _showConfirmModal() {
+  //   const modal = document.getElementById("confirm-modal");
+  //   modal.style.display = "block";
+  // }
 
   _handleLikeIcon() {
     this._cardElement
