@@ -63,15 +63,15 @@ api
 
 /**Functions**/
 
-function changeLikeStatus(evt, id) {
-  const likeButton = evt.target;
-  api.changeLikeStatus(cardId, isLiked).then((res) => {
-    if (isLiked) {
-      evt.target.classList.add("card__like-button_active");
-    } else {
-      evt.target.classList.remove("card__like-button_active");
-    }
-  });
+function changeLikeStatus(card) {
+  api
+    .changeLikeStatus(card.getId(), card.isLiked())
+    .then((res) => {
+      card.updatLikesView();
+    })
+    .catch((err) =>
+      console.error(`An error occurred when changing like status: ${err}`)
+    );
 }
 
 function handleDeleteClick(cardId, card) {
@@ -93,7 +93,8 @@ function createCard(data) {
     data,
     "#card-template",
     handleImageClick,
-    handleDeleteClick
+    handleDeleteClick,
+    changeLikeStatus
   );
   return card.getView();
 }
