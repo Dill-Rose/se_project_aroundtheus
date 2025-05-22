@@ -46,7 +46,6 @@ const api = new Api({
 api
   .getInitialCards()
   .then((res) => {
-    console.log(res);
     cardSection.renderItems(res);
   })
   .catch((err) => {
@@ -56,7 +55,6 @@ api
 api
   .getUserInfo()
   .then((res) => {
-    console.log(res);
     userInfo.setUserInfo(res);
   })
   .catch((err) => {
@@ -65,7 +63,16 @@ api
 
 /**Functions**/
 
-function changeLikeStatus(evt, id) {}
+function changeLikeStatus(evt, id) {
+  const likeButton = evt.target;
+  api.changeLikeStatus(cardId, isLiked).then((res) => {
+    if (isLiked) {
+      evt.target.classList.add("card__like-button_active");
+    } else {
+      evt.target.classList.remove("card__like-button_active");
+    }
+  });
+}
 
 function handleDeleteClick(cardId, card) {
   confirmPopup.open();
