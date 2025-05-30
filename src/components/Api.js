@@ -54,6 +54,16 @@ export default class Api {
     }).then((res) => this._handleServerResponse(res));
   }
 
+  updateAvatar(link) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link,
+      }),
+    }).then(this._handleServerResponse);
+  }
+
   _handleServerResponse(res) {
     if (res.ok) {
       return res.json();

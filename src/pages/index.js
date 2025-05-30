@@ -29,6 +29,7 @@ import {
   profileDescriptionInput,
   cardTitleInput,
   cardUrlInput,
+  avatarEdit,
 } from "../utils/constants.js";
 import { data } from "autoprefixer";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
@@ -66,8 +67,8 @@ api
 function changeLikeStatus(card) {
   api
     .changeLikeStatus(card.getId(), card.isLiked())
-    .then((res) => {
-      card.updatLikesView();
+    .then(() => {
+      card.updateLikesView();
     })
     .catch((err) =>
       console.error(`An error occurred when changing like status: ${err}`)
@@ -146,6 +147,7 @@ modalEdit.addEventListener("click", () => {
   editProfilePopup.open();
 });
 addCardBtn.addEventListener("click", () => addCardPopup.open());
+avatarEdit.addEventListener("click", () => editAvatarPopup.open());
 
 /**Loops**/
 
@@ -177,6 +179,11 @@ const addCardPopup = new PopupWithForm(
 );
 
 addCardPopup.setEventListeners();
+
+const editAvatarPopup = new PopupWithForm(
+  "#change-avatar-modal",
+  handleAvatarSubmit
+);
 
 const cardSection = new Section(
   {
