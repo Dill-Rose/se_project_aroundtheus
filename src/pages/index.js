@@ -213,6 +213,7 @@ imagePopup.setEventListeners();
 const userInfo = new UserInfo({
   nameElement: ".profile__title",
   jobElement: ".profile__description",
+  avatarElement: ".profile__image",
 });
 
 const confirmPopup = new PopupWithConfirm({ popupSelector: "#confirm-modal" });
