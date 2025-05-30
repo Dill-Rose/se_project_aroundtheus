@@ -138,6 +138,14 @@ function handleAddNewCardSubmit(inputValues) {
     .catch((err) => console.log(err));
 }
 
+function handleAvatarSubmit(inputValues) {
+  console.log(inputValues);
+  const link = inputValues.url;
+  api.updateAvatar(link).then((data) => {
+    console.log(data);
+  });
+}
+
 /**Event Listeners**/
 
 modalEdit.addEventListener("click", () => {
