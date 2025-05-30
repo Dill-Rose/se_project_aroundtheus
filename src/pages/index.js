@@ -30,6 +30,7 @@ import {
   cardTitleInput,
   cardUrlInput,
   avatarEdit,
+  changeAvatarForm,
 } from "../utils/constants.js";
 import { data } from "autoprefixer";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
@@ -143,6 +144,8 @@ function handleAvatarSubmit(inputValues) {
   const link = inputValues.url;
   api.updateAvatar(link).then((data) => {
     console.log(data);
+    userInfo.updateUserAvavtar(link);
+    editAvatarPopup.close();
   });
 }
 
@@ -171,8 +174,14 @@ const editCardFormValidator = new FormValidator(
   profileEditForm
 );
 
+const changeAvatarFormValidator = new FormValidator(
+  formValidationSettings,
+  changeAvatarForm
+);
+
 addCardFormValidator.enableValidation();
 editCardFormValidator.enableValidation();
+changeAvatarFormValidator.enableValidation();
 
 const editProfilePopup = new PopupWithForm(
   "#profile-edit-modal",
@@ -192,6 +201,8 @@ const editAvatarPopup = new PopupWithForm(
   "#change-avatar-modal",
   handleAvatarSubmit
 );
+
+editAvatarPopup.setEventListeners();
 
 const cardSection = new Section(
   {

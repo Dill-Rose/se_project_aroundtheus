@@ -46,6 +46,7 @@ const cardListEl = document.querySelector(".cards__list");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector(".modal__form");
 const previewImageModal = document.querySelector("#preview-image-modal");
+const changeAvatarForm = document.querySelector("#change-avatar-form");
 
 /** Buttons and other DOM */
 const modalEdit = document.querySelector("#profile-edit-button");
@@ -91,4 +92,5 @@ export {
   cardTitleInput,
   cardUrlInput,
   avatarEdit,
+  changeAvatarForm,
 };

@@ -17,6 +17,6 @@ export default class UserInfo {
   }
 
   updateUserAvavtar(link) {
-    this._avatarElement.url = link;
+    this._avatarElement.src = link;
   }
 }
