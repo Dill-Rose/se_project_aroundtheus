@@ -14,6 +14,7 @@ export default class UserInfo {
   setUserInfo(data) {
     this._nameElement.textContent = data.name;
     this._jobElement.textContent = data.about;
+    this._avatarElement.src = data.avatar;
   }
 
   updateUserAvavtar(link) {

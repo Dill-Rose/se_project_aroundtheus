@@ -112,6 +112,7 @@ function handleProfileSubmit(inputValues) {
   console.log(inputValues);
   const name = inputValues.title;
   const about = inputValues.description;
+  editProfilePopup.setLoading(true);
   api
     .editProfile(name, about)
     .then(() => {
@@ -120,11 +121,11 @@ function handleProfileSubmit(inputValues) {
     })
     .catch((err) => {
       console.error(err);
-    });
+    })
+    .finally(() => editProfilePopup.setLoading(false));
 }
 
 function handleAddNewCardSubmit(inputValues) {
-  console.log(inputValues);
   const name = inputValues.title;
   const link = inputValues.url;
   api
@@ -140,10 +141,8 @@ function handleAddNewCardSubmit(inputValues) {
 }
 
 function handleAvatarSubmit(inputValues) {
-  console.log(inputValues);
   const link = inputValues.url;
   api.updateAvatar(link).then((data) => {
-    console.log(data);
     userInfo.updateUserAvavtar(link);
     editAvatarPopup.close();
   });
