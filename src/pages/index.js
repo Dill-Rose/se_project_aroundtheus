@@ -116,13 +116,14 @@ function handleProfileSubmit(inputValues) {
   api
     .editProfile(name, about)
     .then(() => {
+      console.log(data);
       userInfo.setUserInfo({ name, about });
       editProfilePopup.close();
     })
     .catch((err) => {
       console.error(err);
-    })
-    .finally(() => editProfilePopup.setLoading(false));
+    });
+  // .finally(() => editProfilePopup.setLoading(false));
 }
 
 function handleAddNewCardSubmit(inputValues) {
@@ -142,7 +143,7 @@ function handleAddNewCardSubmit(inputValues) {
 
 function handleAvatarSubmit(inputValues) {
   const link = inputValues.url;
-  api.updateAvatar(link).then((data) => {
+  api.updateAvatar(link).then(() => {
     userInfo.updateUserAvavtar(link);
     editAvatarPopup.close();
   });
