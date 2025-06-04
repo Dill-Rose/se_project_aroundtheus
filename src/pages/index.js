@@ -122,13 +122,14 @@ function handleProfileSubmit(inputValues) {
     })
     .catch((err) => {
       console.error(err);
-    });
-  // .finally(() => editProfilePopup.setLoading(false));
+    })
+    .finally(() => editProfilePopup.setLoading(false));
 }
 
 function handleAddNewCardSubmit(inputValues) {
   const name = inputValues.title;
   const link = inputValues.url;
+  addCardPopup.setLoading(true);
   api
     .addNewCard({ name, link })
     .then((data) => {
@@ -138,15 +139,21 @@ function handleAddNewCardSubmit(inputValues) {
       addCardForm.reset();
       addCardFormValidator.disableSubmitButton();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => editProfilePopup.setLoading(false));
 }
 
 function handleAvatarSubmit(inputValues) {
   const link = inputValues.url;
-  api.updateAvatar(link).then(() => {
-    userInfo.updateUserAvavtar(link);
-    editAvatarPopup.close();
-  });
+  editAvatarPopup.setLoading(true);
+  api
+    .updateAvatar(link)
+    .then(() => {
+      userInfo.updateUserAvavtar(link);
+      editAvatarPopup.close();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => editProfilePopup.setLoading(false));
 }
 
 /**Event Listeners**/
