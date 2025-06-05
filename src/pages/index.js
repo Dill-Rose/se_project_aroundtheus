@@ -109,14 +109,12 @@ function renderCard(data) {
 /**Event Handlers**/
 
 function handleProfileSubmit(inputValues) {
-  console.log(inputValues);
   const name = inputValues.title;
   const about = inputValues.description;
   editProfilePopup.setLoading(true);
   api
     .editProfile(name, about)
     .then(() => {
-      console.log(data);
       userInfo.setUserInfo({ name, about });
       editProfilePopup.close();
     })
@@ -133,14 +131,13 @@ function handleAddNewCardSubmit(inputValues) {
   api
     .addNewCard({ name, link })
     .then((data) => {
-      console.log(data);
       renderCard(data, cardListEl);
       addCardPopup.close();
       addCardForm.reset();
       addCardFormValidator.disableSubmitButton();
     })
     .catch((err) => console.log(err))
-    .finally(() => editProfilePopup.setLoading(false));
+    .finally(() => addCardPopup.setLoading(false));
 }
 
 function handleAvatarSubmit(inputValues) {
@@ -153,7 +150,7 @@ function handleAvatarSubmit(inputValues) {
       editAvatarPopup.close();
     })
     .catch((err) => console.log(err))
-    .finally(() => editProfilePopup.setLoading(false));
+    .finally(() => editAvatarPopup.setLoading(false));
 }
 
 /**Event Listeners**/
