@@ -46,18 +46,10 @@ const api = new Api({
 });
 
 api
-  .getInitialCards()
-  .then((res) => {
-    cardSection.renderItems(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-api
-  .getUserInfo()
-  .then((res) => {
-    userInfo.setUserInfo(res);
+  .getAppInfo()
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    cardSection.renderItems(cards);
   })
   .catch((err) => {
     console.error(err);
@@ -148,6 +140,8 @@ function handleAvatarSubmit(inputValues) {
     .then(() => {
       userInfo.updateUserAvavtar(link);
       editAvatarPopup.close();
+      changeAvatarForm.reset();
+      changeAvatarFormValidator.disableSubmitButton();
     })
     .catch((err) => console.log(err))
     .finally(() => editAvatarPopup.setLoading(false));

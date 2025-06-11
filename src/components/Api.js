@@ -64,6 +64,10 @@ export default class Api {
     }).then(this._handleServerResponse);
   }
 
+  getAppInfo() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
+  }
+
   _handleServerResponse(res) {
     if (res.ok) {
       return res.json();
