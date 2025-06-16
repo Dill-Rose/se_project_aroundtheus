@@ -46,12 +46,14 @@ const cardListEl = document.querySelector(".cards__list");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector(".modal__form");
 const previewImageModal = document.querySelector("#preview-image-modal");
+const changeAvatarForm = document.querySelector("#change-avatar-form");
 
 /** Buttons and other DOM */
 const modalEdit = document.querySelector("#profile-edit-button");
 const profileModalClose = profileEditModal.querySelector("#modal-close-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
+const avatarEdit = document.querySelector(".profile__image-edit");
 
 const addCardBtn = document.querySelector("#profile-add-button");
 const addCardModalClose = addCardModal.querySelector("#modal-close-button");
@@ -89,4 +91,6 @@ export {
   profileDescriptionInput,
   cardTitleInput,
   cardUrlInput,
+  avatarEdit,
+  changeAvatarForm,
 };
