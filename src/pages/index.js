@@ -128,7 +128,7 @@ function handleAddNewCardSubmit(inputValues) {
       addCardForm.reset();
       addCardFormValidator.disableSubmitButton();
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.error(err))
     .finally(() => addCardPopup.setLoading(false));
 }
 
@@ -143,7 +143,7 @@ function handleAvatarSubmit(inputValues) {
       changeAvatarForm.reset();
       changeAvatarFormValidator.disableSubmitButton();
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.error(err))
     .finally(() => editAvatarPopup.setLoading(false));
 }
 
